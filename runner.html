@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ExtJS 6.0 Unit Test Example</title>
+    <link rel="stylesheet" href="../jasmine/jasmine.css">
+
+    <script src="../jasmine/jasmine.js"></script>
+    <script src="../jasmine/jasmine-html.js"></script>
+    <script src="../jasmine/boot.js"></script>
+    <script src="ext-jut-bridge.js"></script>
+    <script type="text/javascript">
+        var Ext = Ext || {}; // Ext namespace won't be defined yet...
+
+        // This function is called by the Microloader after it has performed basic
+        // device detection. The results are provided in the "tags" object. You can
+        // use these tags here or even add custom tags. These can be used by platform
+        // filters in your manifest or by platformConfig expressions in your app.
+        //
+        Ext.beforeLoad = function (tags) {
+            var s = location.search,  // the query string (ex "?foo=1&bar")
+                profile;
+
+            // For testing look for "?classic" or "?modern" in the URL to override
+            // device detection default.
+            //
+            if (s.match(/\bclassic\b/)) {
+                profile = 'classic-test';
+            }
+            else if (s.match(/\bmodern\b/)) {
+                profile = 'modern-test';
+            }
+            else {
+                profile = tags.desktop ? 'classic-test' : 'modern-test';
+                //profile = tags.phone ? 'modern' : 'classic';
+            }
+
+            Ext.manifest = profile; // this name must match a build profile name
+
+            // This function is called once the manifest is available but before
+            // any data is pulled from it.
+            //
+            //return function (manifest) {
+                // peek at / modify the manifest object
+            //};
+        };
+    </script>
+    <script id="microloader" data-app="5bfdeab0-e204-4acf-9c47-5f0ffccf659e" type="text/javascript" src="bootstrap.js"></script>
+</head>
+<body>
+</body>
+</html>
