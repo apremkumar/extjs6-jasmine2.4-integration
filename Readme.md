@@ -1,0 +1,1 @@
+Based on a veterans sample code for previous versions, I have done this integration for extjs 6.0.1 and jasmine 2.4.1. I made some necessary modifications in some cmd generated files. I know it is not advisable. Still I am looking into a way to avoid it. For time being I am comiting this code so that if anyone is in need of this thing can take it forward.
